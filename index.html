@@ -135,17 +135,28 @@ input[type=text]:focus,select:focus{outline:none;border-color:var(--acc);box-sha
 .askbtns button.main{background:var(--acc);color:#fff}
 .quickbar{display:flex;flex-wrap:wrap;align-items:center;gap:8px;margin-top:14px;padding-top:14px;border-top:1px solid var(--line)}
 .selrow{flex:1 1 100%;min-width:0}
-.pick{width:100%;display:flex;justify-content:space-between;align-items:center;border:1px solid var(--bd);border-radius:9px;padding:8px 11px;background:#fff;color:var(--ink);font-size:15px;font-family:inherit;cursor:pointer;text-align:start}
+.pick{width:100%;display:flex;justify-content:space-between;align-items:center;border:1px solid var(--bd);border-radius:10px;padding:8px 12px;background:#fff;color:#555c58;font-size:14px;font-weight:100;font-family:inherit;cursor:pointer;text-align:start}
 .pick.ph{color:#777}
-.picklist{border:1px solid var(--bd);border-radius:10px;margin-top:6px;max-height:270px;overflow-y:auto;background:#fff;box-shadow:0 6px 18px rgba(16,24,20,.1)}
+.picklist{position:fixed;top:0;right:0;bottom:0;left:0;z-index:30;display:flex;align-items:flex-end;background:rgba(20,28,24,.35)}
 .picklist[hidden]{display:none}
-.pi{display:flex;align-items:center;border-bottom:1px solid var(--line)}
-.pi:last-child{border-bottom:0}
-.pn{flex:1;padding:8px 11px;font-size:16px;cursor:pointer}
-.pn.sel{background:#e7f4ed;font-weight:500}
-.pi .x{padding:8px 18px}
+.sheet{width:100%;max-height:62vh;overflow-y:auto;background:#fff;border-radius:20px 20px 0 0;padding:8px 16px calc(18px + env(safe-area-inset-bottom,0px));box-sizing:border-box}
+.grab{width:40px;height:4px;border-radius:2px;background:#d6dad8;margin:4px auto 10px}
+.grid{display:grid;grid-template-columns:1fr 1fr;column-gap:18px}
+.pi{display:flex;align-items:center;border-bottom:1px solid #f0f2f1}
+.pi:active{background:#f6f8f7}
+.pn{flex:1;min-width:0;padding:6px 2px;font-size:14px;font-weight:100;color:#555c58;line-height:1.7;cursor:pointer;overflow-wrap:anywhere}
+.pn.sel{color:var(--acc)}
+.pi .x{padding:4px 8px;font-size:16px;font-weight:100;color:#b3b8b5}
 #qt{width:66px;text-align:center;direction:ltr;padding:8px 4px}
-#un{flex:1;min-width:0;padding:8px 6px;font-size:14px}
+.unbtn{flex:1;min-width:0;min-height:40px;display:flex;justify-content:space-between;align-items:center;gap:6px;padding:4px 12px;border:1px solid var(--bd);border-radius:10px;background:#fff;color:#555c58;font-family:inherit;font-size:14px;font-weight:100;cursor:pointer;text-align:start}
+.unbtn .ar{font-size:12px;color:#9aa19d}
+.ugrid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+.uc{padding:7px 4px;border:1px solid #e6e9e7;border-radius:10px;background:#fff;color:#555c58;font-family:inherit;font-size:14px;font-weight:100;line-height:1.7;cursor:pointer}
+.uc:active{background:#f6f8f7}
+.uc.sel{border-color:var(--acc);color:var(--acc);background:#eef7f2}
+.nonum{flex:1 1 100%;display:flex;align-items:center;gap:8px;font-size:14px;color:var(--muted);cursor:pointer}
+.nonum input{width:18px;height:18px;accent-color:var(--acc);margin:0}
+#qt:disabled{background:#f1f1f1}
 .quickbar .addb{padding:0 12px;min-height:40px;font-size:14px}
 .list{margin-top:14px;background:#fff;border:1px solid #e4e8e6;border-radius:14px;box-shadow:0 1px 2px rgba(16,24,20,.05);overflow:hidden}
 .item{display:flex;align-items:center;gap:10px;padding:9px 14px;border-bottom:1px solid var(--line)}
@@ -175,15 +186,14 @@ input[type=text]:focus,select:focus{outline:none;border-color:var(--acc);box-sha
 .ph{display:flex;justify-content:space-between;align-items:center;gap:10px;padding-bottom:8px;border-bottom:2px solid var(--acc)}
 .paper h2{margin:0;font-size:18px;font-weight:600;line-height:1.5;color:var(--ink)}
 .paper .dt{color:var(--muted);font-size:12px;direction:ltr;line-height:1.4;white-space:nowrap}
-.rows{margin-top:4px;display:flex;gap:12px}
-.col{flex:1;min-width:0;display:grid;grid-template-columns:auto auto minmax(0,max-content) 1fr;align-content:start}
+.rows{margin-top:3px;display:flex;gap:8px}
+.col{flex:1;min-width:0;display:grid;grid-template-columns:auto minmax(0,1fr) auto;align-content:start}
 .col>span{display:flex;align-items:center;padding:1px 0;border-bottom:1px solid #eceeed;font-size:14px;line-height:1.5;min-width:0}
-.col>span:nth-child(8n+5),.col>span:nth-child(8n+6),.col>span:nth-child(8n+7),.col>span:nth-child(8n+8){background:#f5f7f6}
-.col .no{color:#9aa19d;font-size:11px;min-width:24px;padding:1px 4px;justify-content:center;direction:ltr}
-.col .bxc{padding-inline-end:8px}
-.box{display:block;width:12px;height:12px;border:1px solid #555;border-radius:3px;background:#fff}
-.col .t{overflow-wrap:anywhere;font-weight:400;padding-inline-end:24px}
-.col .qty{color:var(--acc);font-weight:500;font-size:13px;white-space:nowrap;padding-inline-end:6px}
+.col>span:nth-child(6n+4),.col>span:nth-child(6n+5),.col>span:nth-child(6n+6){background:#f5f7f6}
+.col .bxc{padding-inline-end:4px}
+.box{display:flex;align-items:center;justify-content:center;min-width:19px;height:14px;padding:0 2px;box-sizing:border-box;border:1px solid #666;border-radius:2px;background:#fff;font-style:normal;font-size:9px;font-weight:500;color:#333;direction:ltr;line-height:1}
+.col .t{overflow-wrap:anywhere;font-weight:400;padding-inline-end:6px;line-height:1.35}
+.col .qty{color:var(--acc);font-weight:500;font-size:13px;white-space:nowrap;padding-inline-end:2px}
 .gh{display:flex;justify-content:space-between;align-items:center;margin-top:8px;padding:1px 10px;background:var(--tint);color:var(--acc);font-weight:600;font-size:13px;line-height:1.7;border-radius:6px}
 .gh b{font-weight:600;font-size:12px}
 .paper .ct{margin-top:8px;padding-top:6px;border-top:1px solid var(--line);text-align:center;color:var(--ink);font-weight:600;font-size:12px;line-height:1.4}
@@ -208,8 +218,9 @@ input[type=text]:focus,select:focus{outline:none;border-color:var(--acc);box-sha
 </div>
 <div class="quickbar">
 <div class="selrow" id="pickWrap"><button type="button" class="pick ph" id="pick" onclick="togglePick()"><span id="pickTxt"></span><span>&#9662;</span></button><div class="picklist" id="pickList" hidden></div></div>
-<input id="qt" type="text" inputmode="decimal" value="1" data-al="qty" data-ph="qty">
-<select id="un" data-al="unit"></select>
+<label class="nonum"><input type="checkbox" id="nn"><span data-t="no_num"></span></label>
+<input id="qt" type="text" inputmode="decimal" value="0" data-al="qty" data-ph="qty">
+<select id="un" hidden></select><button type="button" id="unBtn" class="unbtn" data-al="unit"></button><div class="picklist" id="unList" hidden></div>
 <button class="addb" data-t="add_buy" onclick="addSelected()"></button>
 </div>
 </section>
@@ -243,9 +254,9 @@ const KEY='rashanList';
 
 /* ---------- Languages ---------- */
 const T={
-ur:{ver_lbl:'ورژن ',upd_check:'اپڈیٹ چیک کریں',upd_none:'ایپ پہلے سے تازہ ہے۔',upd_fail:'اپڈیٹ نہیں ہو سکی۔ انٹرنیٹ چیک کریں۔',upd_off:'اپڈیٹ کا لنک سیٹ نہیں ہے۔',upd_ready:'نیا ورژن تیار ہے۔',upd_apply:'ابھی لگائیں',cat_r:'راشن',cat_m:'میڈیکل',cat_g:'جنرل اسٹور',cat_v:'سبزی',slip_r:'راشن کی پرچی',slip_m:'میڈیکل کی پرچی',slip_g:'جنرل اسٹور کی پرچی',list_r:'گھر کا راشن',list_m:'میڈیکل کی فہرست',list_g:'جنرل اسٹور کی فہرست',title:'گھر کا راشن',name_ph:'نئی چیز کا نام لکھیں',add_name:'نام شامل کریں',pick_ph:'چیز منتخب کریں',qty:'مقدار',unit:'اکائی',add_buy:'خریداری میں شامل',left:'باقی: ',slip_btn:'پرچی بنائیں',share:'شیئر کریں',clear_bought:'خریدی ہوئی ہٹائیں',clear_all:'سب صاف کریں',no:'نہیں',yes:'ہاں',back:'واپس',save_img:'تصویر محفوظ کریں',slip_title:'خریداری کی پرچی',total:'کل چیزیں: ',empty:'فہرست خالی ہے۔<br>اوپر سے چیز منتخب کر کے مقدار درج کریں۔',pick_empty:'کوئی نام نہیں۔ اوپر سے نیا نام شامل کریں۔',del:'ہٹائیں',removed:'ہٹا دیا گیا: ',exists:'یہ نام پہلے سے موجود ہے: ',added:'نام شامل ہو گیا: ',pick_first:'پہلے چیز منتخب کریں۔',nothing_left:'فہرست میں کوئی باقی چیز نہیں ہے۔',none_marked:'کوئی خریدی ہوئی چیز نشان زد نہیں ہے۔',ask_bought:'خریدی ہوئی تمام چیزیں ہٹا دیں؟',ask_all:'پوری فہرست صاف کر دیں؟',copied:'فہرست کاپی ہو گئی۔',copy_fail:'کاپی نہیں ہو سکی۔',img_saved:'تصویر محفوظ ہو گئی۔',save_fail:'محفوظ نہیں ہو سکی: ',img_fail:'تصویر نہیں بن سکی۔ اسکرین شاٹ لے لیں۔',list_title:'گھر کا راشن'},
-sd:{ver_lbl:'ورزن ',upd_check:'اپڊيٽ چيڪ ڪريو',upd_none:'ايپ اڳ ۾ ئي تازي آهي.',upd_fail:'اپڊيٽ نه ٿي سگهي. انٽرنيٽ چيڪ ڪريو.',upd_off:'اپڊيٽ جو لنڪ سيٽ ڪيل ناهي.',upd_ready:'نئون ورزن تيار آهي.',upd_apply:'هاڻي لڳايو',cat_r:'راشن',cat_m:'ميڊيڪل',cat_g:'جنرل اسٽور',cat_v:'ڀاڄي',slip_r:'راشن جي پرچي',slip_m:'ميڊيڪل جي پرچي',slip_g:'جنرل اسٽور جي پرچي',list_r:'گھر جو راشن',list_m:'ميڊيڪل جي فهرست',list_g:'جنرل اسٽور جي فهرست',title:'گھر جو راشن',name_ph:'نئين شيءِ جو نالو لکو',add_name:'نالو شامل ڪريو',pick_ph:'شيءِ چونڊيو',qty:'مقدار',unit:'اڪائي',add_buy:'خريداريءَ ۾ شامل',left:'باقي: ',slip_btn:'پرچي ٺاهيو',share:'شيئر ڪريو',clear_bought:'خريد ٿيل هٽايو',clear_all:'سڀ صاف ڪريو',no:'نه',yes:'ها',back:'واپس',save_img:'تصوير محفوظ ڪريو',slip_title:'خريداريءَ جي پرچي',total:'ڪل شيون: ',empty:'فهرست خالي آهي.<br>مٿان کان شيءِ چونڊي مقدار داخل ڪريو.',pick_empty:'ڪوبه نالو ڪونهي. مٿان کان نئون نالو شامل ڪريو.',del:'هٽايو',removed:'هٽايو ويو: ',exists:'هي نالو اڳ ۾ ئي موجود آهي: ',added:'نالو شامل ٿي ويو: ',pick_first:'پهريان شيءِ چونڊيو.',nothing_left:'فهرست ۾ ڪابه باقي شيءِ ڪانهي.',none_marked:'ڪا به خريد ٿيل شيءِ نشان ٿيل ناهي.',ask_bought:'خريد ٿيل سڀ شيون هٽائي ڇڏيون؟',ask_all:'پوري فهرست صاف ڪري ڇڏيون؟',copied:'فهرست ڪاپي ٿي وئي.',copy_fail:'ڪاپي نه ٿي سگهي.',img_saved:'تصوير محفوظ ٿي وئي.',save_fail:'محفوظ نه ٿي سگهي: ',img_fail:'تصوير نه ٺهي سگهي. اسڪرين شاٽ وٺو.',list_title:'گھر جو راشن'},
-en:{ver_lbl:'Version ',upd_check:'Check for update',upd_none:'App is up to date.',upd_fail:'Could not update. Check internet.',upd_off:'Update link is not set.',upd_ready:'New version is ready.',upd_apply:'Apply now',cat_r:'Grocery',cat_m:'Medical',cat_g:'General Store',cat_v:'Vegetables',slip_r:'Grocery slip',slip_m:'Medical slip',slip_g:'General store slip',list_r:'Home Grocery List',list_m:'Medical list',list_g:'General store list',title:'Home Grocery List',name_ph:'Type a new item name',add_name:'Add name',pick_ph:'Choose item',qty:'Qty',unit:'Unit',add_buy:'Add to list',left:'Left: ',slip_btn:'Make slip',share:'Share',clear_bought:'Remove bought',clear_all:'Clear all',no:'No',yes:'Yes',back:'Back',save_img:'Save picture',slip_title:'Shopping slip',total:'Total items: ',empty:'The list is empty.<br>Choose an item above and enter the quantity.',pick_empty:'No names yet. Add a new name above.',del:'Remove',removed:'Removed: ',exists:'This name already exists: ',added:'Name added: ',pick_first:'Choose an item first.',nothing_left:'No items left in the list.',none_marked:'No bought items are marked.',ask_bought:'Remove all bought items?',ask_all:'Clear the whole list?',copied:'List copied.',copy_fail:'Could not copy.',img_saved:'Picture saved.',save_fail:'Could not save: ',img_fail:'Could not make the picture. Take a screenshot instead.',list_title:'Home Grocery List'}
+ur:{ver_lbl:'ورژن ',upd_check:'اپڈیٹ چیک کریں',upd_none:'ایپ پہلے سے تازہ ہے۔',upd_fail:'اپڈیٹ نہیں ہو سکی۔ انٹرنیٹ چیک کریں۔',upd_off:'اپڈیٹ کا لنک سیٹ نہیں ہے۔',upd_ready:'نیا ورژن تیار ہے۔',upd_apply:'ابھی لگائیں',cat_r:'راشن',cat_m:'میڈیکل',cat_g:'جنرل اسٹور',cat_v:'سبزی',slip_r:'راشن کی پرچی',slip_m:'میڈیکل کی پرچی',slip_g:'جنرل اسٹور کی پرچی',list_r:'گھر کا راشن',list_m:'میڈیکل کی فہرست',list_g:'جنرل اسٹور کی فہرست',title:'گھر کا راشن',name_ph:'نئی چیز کا نام لکھیں',add_name:'نام شامل کریں',pick_ph:'چیز منتخب کریں',qty:'مقدار',no_num:'بغیر عدد',unit:'اکائی',add_buy:'خریداری میں شامل',left:'باقی: ',slip_btn:'پرچی بنائیں',share:'شیئر کریں',clear_bought:'خریدی ہوئی ہٹائیں',clear_all:'سب صاف کریں',no:'نہیں',yes:'ہاں',back:'واپس',save_img:'تصویر محفوظ کریں',slip_title:'خریداری کی پرچی',total:'کل چیزیں: ',empty:'فہرست خالی ہے۔<br>اوپر سے چیز منتخب کر کے مقدار درج کریں۔',pick_empty:'کوئی نام نہیں۔ اوپر سے نیا نام شامل کریں۔',del:'ہٹائیں',removed:'ہٹا دیا گیا: ',exists:'یہ نام پہلے سے موجود ہے: ',added:'نام شامل ہو گیا: ',pick_first:'پہلے چیز منتخب کریں۔',nothing_left:'فہرست میں کوئی باقی چیز نہیں ہے۔',none_marked:'کوئی خریدی ہوئی چیز نشان زد نہیں ہے۔',ask_bought:'خریدی ہوئی تمام چیزیں ہٹا دیں؟',ask_all:'پوری فہرست صاف کر دیں؟',copied:'فہرست کاپی ہو گئی۔',copy_fail:'کاپی نہیں ہو سکی۔',img_saved:'تصویر محفوظ ہو گئی۔',save_fail:'محفوظ نہیں ہو سکی: ',img_fail:'تصویر نہیں بن سکی۔ اسکرین شاٹ لے لیں۔',list_title:'گھر کا راشن'},
+sd:{ver_lbl:'ورزن ',upd_check:'اپڊيٽ چيڪ ڪريو',upd_none:'ايپ اڳ ۾ ئي تازي آهي.',upd_fail:'اپڊيٽ نه ٿي سگهي. انٽرنيٽ چيڪ ڪريو.',upd_off:'اپڊيٽ جو لنڪ سيٽ ڪيل ناهي.',upd_ready:'نئون ورزن تيار آهي.',upd_apply:'هاڻي لڳايو',cat_r:'راشن',cat_m:'ميڊيڪل',cat_g:'جنرل اسٽور',cat_v:'ڀاڄي',slip_r:'راشن جي پرچي',slip_m:'ميڊيڪل جي پرچي',slip_g:'جنرل اسٽور جي پرچي',list_r:'گھر جو راشن',list_m:'ميڊيڪل جي فهرست',list_g:'جنرل اسٽور جي فهرست',title:'گھر جو راشن',name_ph:'نئين شيءِ جو نالو لکو',add_name:'نالو شامل ڪريو',pick_ph:'شيءِ چونڊيو',qty:'مقدار',no_num:'بنا انگ',unit:'اڪائي',add_buy:'خريداريءَ ۾ شامل',left:'باقي: ',slip_btn:'پرچي ٺاهيو',share:'شيئر ڪريو',clear_bought:'خريد ٿيل هٽايو',clear_all:'سڀ صاف ڪريو',no:'نه',yes:'ها',back:'واپس',save_img:'تصوير محفوظ ڪريو',slip_title:'خريداريءَ جي پرچي',total:'ڪل شيون: ',empty:'فهرست خالي آهي.<br>مٿان کان شيءِ چونڊي مقدار داخل ڪريو.',pick_empty:'ڪوبه نالو ڪونهي. مٿان کان نئون نالو شامل ڪريو.',del:'هٽايو',removed:'هٽايو ويو: ',exists:'هي نالو اڳ ۾ ئي موجود آهي: ',added:'نالو شامل ٿي ويو: ',pick_first:'پهريان شيءِ چونڊيو.',nothing_left:'فهرست ۾ ڪابه باقي شيءِ ڪانهي.',none_marked:'ڪا به خريد ٿيل شيءِ نشان ٿيل ناهي.',ask_bought:'خريد ٿيل سڀ شيون هٽائي ڇڏيون؟',ask_all:'پوري فهرست صاف ڪري ڇڏيون؟',copied:'فهرست ڪاپي ٿي وئي.',copy_fail:'ڪاپي نه ٿي سگهي.',img_saved:'تصوير محفوظ ٿي وئي.',save_fail:'محفوظ نه ٿي سگهي: ',img_fail:'تصوير نه ٺهي سگهي. اسڪرين شاٽ وٺو.',list_title:'گھر جو راشن'},
+en:{ver_lbl:'Version ',upd_check:'Check for update',upd_none:'App is up to date.',upd_fail:'Could not update. Check internet.',upd_off:'Update link is not set.',upd_ready:'New version is ready.',upd_apply:'Apply now',cat_r:'Grocery',cat_m:'Medical',cat_g:'General Store',cat_v:'Vegetables',slip_r:'Grocery slip',slip_m:'Medical slip',slip_g:'General store slip',list_r:'Home Grocery List',list_m:'Medical list',list_g:'General store list',title:'Home Grocery List',name_ph:'Type a new item name',add_name:'Add name',pick_ph:'Choose item',qty:'Qty',no_num:'No number',unit:'Unit',add_buy:'Add to list',left:'Left: ',slip_btn:'Make slip',share:'Share',clear_bought:'Remove bought',clear_all:'Clear all',no:'No',yes:'Yes',back:'Back',save_img:'Save picture',slip_title:'Shopping slip',total:'Total items: ',empty:'The list is empty.<br>Choose an item above and enter the quantity.',pick_empty:'No names yet. Add a new name above.',del:'Remove',removed:'Removed: ',exists:'This name already exists: ',added:'Name added: ',pick_first:'Choose an item first.',nothing_left:'No items left in the list.',none_marked:'No bought items are marked.',ask_bought:'Remove all bought items?',ask_all:'Clear the whole list?',copied:'List copied.',copy_fail:'Could not copy.',img_saved:'Picture saved.',save_fail:'Could not save: ',img_fail:'Could not make the picture. Take a screenshot instead.',list_title:'Home Grocery List'}
 };
 let lang='ur';
 try{const s=localStorage.getItem('rashanLang');if(s&&T[s])lang=s;}catch(e){}
@@ -260,9 +271,9 @@ const QK=()=>QUICKS[cat];
 const NSD=['تيل','گيهه','کنڊ','لوڻ','اٽو','چانور','چانهه جي پتي','کير','چڻن جي ڏار','مسور جي ڏار','ماش جي ڏار','مرچ پاؤڊر','هلدي','ڌنيا پاؤڊر','آنا','آلو','ڪانڊا','ٽماٽا','صابڻ','سرف'];
 const NEN=['Cooking oil','Ghee','Sugar','Salt','Flour (atta)','Rice','Tea leaves','Milk','Chana dal','Masoor dal','Mash dal','Chili powder','Turmeric','Coriander powder','Eggs','Potatoes','Onions','Tomatoes','Soap','Detergent'];
 /* Units: Urdu is the stored key */
-const UK=['\u06a9\u0644\u0648','\u0622\u062f\u06be\u0627 \u06a9\u0644\u0648','\u067e\u0627\u0624','\u06af\u0631\u0627\u0645','\u0644\u06cc\u0679\u0631','\u067e\u06cc\u06a9\u0679','\u0633\u0627\u0634\u06d2','\u0688\u0628\u06cc','\u0688\u0628\u06c1','\u0628\u0648\u062a\u0644','\u062f\u0631\u062c\u0646','\u0639\u062f\u062f','\u0631\u0648\u067e\u06d2'];
-const USD=['ڪلو','اڌ ڪلو','پاءُ','گرام','ليٽر','پيڪيٽ','ساشي','دٻي','دٻو','بوتل','درجن','عدد','رپيا'];
-const UEN=['kg','half kg','pao','gram','litre','packet','sachet','small box','box','bottle','dozen','piece','Rs'];
+const UK=['\u06a9\u0644\u0648','\u0622\u062f\u06be\u0627 \u06a9\u0644\u0648','\u067e\u0627\u0624','\u06af\u0631\u0627\u0645','\u0644\u06cc\u0679\u0631','\u067e\u06cc\u06a9\u0679','\u0633\u0627\u0634\u06d2','\u0688\u0628\u06cc','\u0688\u0628\u06c1','\u0628\u0648\u062a\u0644','\u062f\u0631\u062c\u0646','\u0639\u062f\u062f','\u0631\u0648\u067e\u06d2','\u0622\u062f\u06be\u0627 \u067e\u0627\u0624'];
+const USD=['ڪلو','اڌ ڪلو','پاءُ','گرام','ليٽر','پيڪيٽ','ساشي','دٻي','دٻو','بوتل','درجن','عدد','رپيا','اڌ پاءُ'];
+const UEN=['kg','half kg','pao','gram','litre','packet','sachet','small box','box','bottle','dozen','piece','Rs','half pao'];
 /* Extra built-in names: [Urdu key, Sindhi, English, default unit index in UK] */
 const EXTRA=[
 ['بیسن','بيسڻ','Gram flour (besan)',0],
@@ -360,10 +371,14 @@ const i=UK.indexOf(u);
 if(i<0)return u;
 return lang==='sd'?USD[i]:UEN[i];
 }
+function updUnBtn(){const o=$('un').options[$('un').selectedIndex];$('unBtn').innerHTML='<span>'+(o?o.text:'')+'</span><span class="ar">&#9662;</span>';}
+function openUn(){const cur=$('un').value;$('unList').innerHTML='<div class="sheet"><div class="grab" data-close="1"></div><div class="ugrid">'+Array.from($('un').options).map(o=>'<button type="button" class="uc'+(o.value===cur?' sel':'')+'" data-uv="'+esc(o.value)+'">'+o.text+'</button>').join('')+'</div></div>';$('unList').hidden=false;}
 function buildUnits(){
 const cur=$('un').value||UK[0];
-$('un').innerHTML=UK.map(u=>'<option value="'+u+'">'+dispUnit(u)+'</option>').join('');
+const ord=UK.map((u,i)=>i);ord.splice(ord.indexOf(13),1);ord.splice(3,0,13);
+$('un').innerHTML=ord.map(i=>UK[i]).map(u=>'<option value="'+u+'">'+dispUnit(u)+'</option>').join('');
 $('un').value=cur;
+updUnBtn();
 }
 function applyLang(){
 const h=document.documentElement;
@@ -408,7 +423,7 @@ if(!CATS[c]||c===cat)return;
 cat=c;
 try{localStorage.setItem('rashanCat',cat);}catch(e){}
 items=D[cat].items;custom=D[cat].custom;hidden=D[cat].hidden;
-$('pickList').hidden=true;$('nm').value='';$('qt').value='1';
+$('pickList').hidden=true;$('nm').value='';$('qt').value='0';
 applyTabs();setSel('');render();
 }
 $('tabs').addEventListener('click',e=>{const b=e.target.closest('button');if(b)setCat(b.dataset.c);});
@@ -417,7 +432,7 @@ const uid=()=>Date.now().toString(36)+Math.random().toString(36).slice(2,6);
 const pendingByName=n=>items.find(x=>!x.d&&x.n===n);
 function addItem(n,u,q){
 if(!n)return;
-items.unshift({id:uid(),n:n,q:q||'1',u:u,p:'',d:false});
+items.unshift({id:uid(),n:n,q:(q===undefined?'1':q),u:u,p:'',d:false});
 save();render();
 }
 const saveNames=()=>{D[cat].custom=custom;D[cat].hidden=hidden;try{localStorage.setItem(CATS[cat].ck,JSON.stringify(custom));localStorage.setItem(CATS[cat].hk,JSON.stringify(hidden));}catch(e){}};
@@ -431,7 +446,7 @@ renderPick();
 }
 function renderPick(){
 const l=allQuick();
-$('pickList').innerHTML=l.length?l.map((q,i)=>`<div class="pi"><span class="pn${q[0]===selName?' sel':''}" data-i="${i}">${esc(dispName(q[0]))}</span><button class="x" data-del="${i}" aria-label="${esc(TX('del'))}">\u00d7</button></div>`).join(''):'<div class="empty">'+TX('pick_empty')+'</div>';
+$('pickList').innerHTML='<div class="sheet"><div class="grab" data-close="1"></div>'+(l.length?'<div class="grid">'+l.map((q,i)=>`<div class="pi"><span class="pn${q[0]===selName?' sel':''}" data-i="${i}">${esc(dispName(q[0]))}</span><button class="x" data-del="${i}" aria-label="${esc(TX('del'))}">\u00d7</button></div>`).join('')+'</div>':'<div class="empty">'+TX('pick_empty')+'</div>')+'</div>';
 }
 function togglePick(){
 const l=$('pickList');l.hidden=!l.hidden;
@@ -446,15 +461,18 @@ toast(TX('removed')+dispName(n));
 }
 function handlePick(t){
 const d=t.dataset||{};
-if(d.i!==undefined){
+if(t.id==='pickList'||d.close!==undefined){$('pickList').hidden=true;}
+else if(d.i!==undefined){
 const q=allQuick()[Number(d.i)];
-if(q){setSel(q[0]);$('un').value=q[1];$('pickList').hidden=true;}
+if(q){setSel(q[0]);$('un').value=q[1];updUnBtn();$('pickList').hidden=true;}
 }else if(d.del!==undefined){
 const q=allQuick()[Number(d.del)];
 if(q)removeName(q[0]);
 }
 }
 $('pickList').addEventListener('click',e=>{e.stopPropagation();handlePick(e.target);});
+$('unBtn').addEventListener('click',e=>{e.stopPropagation();openUn();});
+$('unList').addEventListener('click',e=>{e.stopPropagation();const t=e.target,b=t.closest?t.closest('[data-uv]'):null;if(b){$('un').value=b.dataset.uv;updUnBtn();$('unList').hidden=true;}else if(t.id==='unList'||(t.dataset&&t.dataset.close!==undefined))$('unList').hidden=true;});
 document.addEventListener('click',e=>{const w=$('pickWrap');if(w&&!w.contains(e.target))$('pickList').hidden=true;});
 function rememberName(n,u){
 if(allQuick().some(q=>q[0]===n))return;
@@ -477,13 +495,14 @@ $('nm').addEventListener('keydown',e=>{if(e.key==='Enter')add();});
 function selAll(el){try{el.select();el.setSelectionRange(0,String(el.value).length);}catch(e){}}
 $('qt').addEventListener('focus',e=>{const el=e.target;setTimeout(()=>selAll(el),30);});
 $('qt').addEventListener('click',e=>selAll(e.target));
+$('nn').addEventListener('change',()=>{const on=$('nn').checked;$('qt').disabled=on;$('qt').style.opacity=on?'.4':'';if(on)$('qt').value='';else if(!$('qt').value)$('qt').value='0';});
 $('list').addEventListener('focusin',e=>{const el=e.target;if(el.dataset&&el.dataset.a==='q')setTimeout(()=>selAll(el),30);});
 function addSelected(){
 if(!selName){toast(TX('pick_first'));return;}
 const qk=allQuick().find(q=>q[0]===selName);
 if(!qk){setSel('');return;}
-addItem(qk[0],$('un').value,$('qt').value.trim()||'1');
-setSel('');$('qt').value='1';
+addItem(qk[0],$('un').value,$('nn').checked?'':$('qt').value.trim());
+setSel('');$('qt').value=$('nn').checked?'':'0';
 }
 
 function render(){
@@ -503,7 +522,7 @@ else if(a==='q'){selAll(e.target);}
 $('list').addEventListener('change',e=>{
 if(e.target.dataset.a!=='q')return;
 const it=find(e.target);if(!it)return;
-it.q=e.target.value.trim()||'1';save();render();
+it.q=e.target.value.trim();save();render();
 });
 
 function slipGroups(){
@@ -517,7 +536,7 @@ return out;
 function textList(){
 const gs=slipGroups();
 if(!gs.length)return '';
-return TX('slip_title')+'\n\n'+gs.map(gp=>TX('cat_'+gp.c)+'\n'+gp.pend.map(x=>'\u2022 '+dispName(x.n,gp.c)+' \u2014 '+x.q+' '+dispUnit(x.u)).join('\n')).join('\n\n');
+return TX('slip_title')+'\n\n'+gs.map(gp=>TX('cat_'+gp.c)+'\n'+gp.pend.map(x=>'\u2022 '+dispName(x.n,gp.c)+' \u2014 '+(x.q+' '+dispUnit(x.u)).trim()).join('\n')).join('\n\n');
 }
 function copyText(t){
 const fb=()=>{const ta=document.createElement('textarea');ta.value=t;document.body.appendChild(ta);ta.select();try{document.execCommand('copy');toast(TX('copied'));}catch(e){toast(TX('copy_fail'));}ta.remove();};
@@ -538,7 +557,7 @@ const d=new Date(),dt=String(d.getDate()).padStart(2,'0')+'/'+String(d.getMonth(
 let html='',no=0;
 gs.forEach(gp=>{
 const cols=gp.pend.length>18?2:1,per=Math.ceil(gp.pend.length/cols);let ch='';
-for(let c=0;c<cols;c++){ch+='<div class="col">'+gp.pend.slice(c*per,(c+1)*per).map((x,j)=>'<span class="no">'+(no+c*per+j+1)+'</span><span class="bxc"><i class="box"></i></span><span class="t">'+esc(dispName(x.n,gp.c))+'</span><span class="qty">'+esc(x.q)+' '+esc(dispUnit(x.u))+'</span>').join('')+'</div>';}
+for(let c=0;c<cols;c++){ch+='<div class="col">'+gp.pend.slice(c*per,(c+1)*per).map((x,j)=>'<span class="bxc"><i class="box">'+(no+c*per+j+1)+'</i></span><span class="t">'+esc(dispName(x.n,gp.c))+'</span><span class="qty">'+esc((x.q+' '+dispUnit(x.u)).trim())+'</span>').join('')+'</div>';}
 no+=gp.pend.length;
 html+='<div class="gh"><span>'+esc(TX('cat_'+gp.c))+'</span><b>'+gp.pend.length+'</b></div><div class="rows">'+ch+'</div>';
 });
@@ -554,7 +573,7 @@ const a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download=
 function saveSlip(){
 if(!slipData)return;
 const rtl=RTL(),sg=rtl?-1:1,ACC='#1f6b4a';
-const gs=slipData.gs,S=2,W=520,pad=16,gap=14,rowH=30,top=68,gh=26,ggap=8;
+const gs=slipData.gs,S=2,W=520,pad=16,gap=14,rowH=26,bw=20,top=68,gh=26,ggap=8;
 const F=FONT();
 try{
 const mc=document.createElement('canvas').getContext('2d');
@@ -566,12 +585,11 @@ const lay=[];
 for(let col=0;col<cols;col++){
 const part=gp.pend.slice(col*per,(col+1)*per);
 mc.font='500 14px '+F;
-const qs=part.map(x=>x.q+' '+dispUnit(x.u)),qmax=Math.max.apply(null,qs.map(q=>mc.measureText(q).width));
-const avail=colW-48-qmax-24-12;
-mc.font='400 17px '+F;
-const ns=part.map(x=>{const full=dispName(x.n,gp.c);let nn=full;while(nn.length>1&&mc.measureText(nn).width>avail)nn=nn.slice(0,-1);return nn!==full?nn+'\u2026':nn;});
-const nmax=Math.max.apply(null,ns.map(nn=>mc.measureText(nn).width));
-lay.push({qs:qs,ns:ns,nmax:nmax});
+const qs=part.map(x=>(x.q+' '+dispUnit(x.u)).trim()),qmax=Math.max.apply(null,qs.map(q=>mc.measureText(q).width));
+const avail=colW-(bw+6)-qmax-14;
+const ns=part.map(x=>{const full=dispName(x.n,gp.c);let f=17;for(;f>12;f--){mc.font='400 '+f+'px '+F;if(mc.measureText(full).width<=avail)break;}
+mc.font='400 '+f+'px '+F;let nn=full;while(nn.length>1&&mc.measureText(nn).width>avail)nn=nn.slice(0,-1);return {t:nn!==full?nn+'\u2026':nn,f:f};});
+lay.push({qs:qs,ns:ns});
 }
 const o={gp:gp,cols:cols,per:per,colW:colW,lay:lay,y:y0};
 y0+=gh+4+per*rowH+ggap;
@@ -598,15 +616,14 @@ g.textAlign=rtl?'left':'right';g.font='600 13px '+F;g.fillText(String(o.gp.pend.
 o.gp.pend.forEach((x,i)=>{
 const col=Math.floor(i/o.per),row=i%o.per,L=o.lay[col];
 const O=rtl?W-pad-col*(o.colW+gap):pad+col*(o.colW+gap);
-const x0=rtl?O-o.colW:O,ry=base+row*rowH,y=ry+rowH/2,nx=O+sg*48;
+const x0=rtl?O-o.colW:O,ry=base+row*rowH,y=ry+rowH/2,nx=O+sg*(bw+6);
 if(row%2===1){g.fillStyle='#f5f7f6';g.fillRect(x0,ry,o.colW,rowH);}
 g.fillStyle='#eceeed';g.fillRect(x0,ry+rowH-1,o.colW,1);
-g.textAlign=rtl?'right':'left';
-g.fillStyle='#9aa19d';g.font='11px '+F;g.fillText(String(no+i+1),O+sg*6,y);
-g.fillStyle='#fff';g.fillRect(rtl?O-42:O+30,y-6,12,12);
-g.strokeStyle='#555';g.lineWidth=1;g.strokeRect(rtl?O-42:O+30,y-6,12,12);
-g.font='400 17px '+F;g.fillStyle='#1b1b1b';g.fillText(L.ns[row],nx,y);
-g.font='500 14px '+F;g.fillStyle=ACC;g.fillText(L.qs[row],nx+sg*(L.nmax+24),y);
+const bx=rtl?O-bw:O;
+g.fillStyle='#fff';g.fillRect(bx,y-7,bw,14);g.strokeStyle='#666';g.lineWidth=1;g.strokeRect(bx+.5,y-6.5,bw-1,13);
+g.textAlign='center';g.fillStyle='#333';g.font='500 9px '+F;g.fillText(String(no+i+1),bx+bw/2,y);
+g.textAlign=rtl?'right':'left';g.font='400 '+L.ns[row].f+'px '+F;g.fillStyle='#1b1b1b';g.fillText(L.ns[row].t,nx,y);
+g.textAlign=rtl?'left':'right';g.font='500 14px '+F;g.fillStyle=ACC;g.fillText(L.qs[row],O+sg*(o.colW-4),y);
 });
 no+=o.gp.pend.length;
 });
